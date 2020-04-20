@@ -11,10 +11,8 @@ require('./config/passport')(passport);
 const auth = require('./routes/auth');
 const keys = require('./config/keys');
 
-mongoose.connect(
-  keys.mongoURI,
-  { useNewUrlParser: true },
-  () => console.log('Mongodb Connected')
+mongoose.connect(keys.mongoURI, { useNewUrlParser: true }, () =>
+  console.log('Mongodb Connected')
 );
 
 const app = express();
@@ -24,7 +22,7 @@ app.use(
   session({
     secret: 'secret',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
   })
 );
 //Passport Middleware
@@ -35,6 +33,10 @@ app.use(passport.session());
 app.use((req, res, next) => {
   res.locals.user = req.user || null;
   next();
+});
+
+app.get('/', (req, res) => {
+  res.json({ msg: 'hook successfully working' });
 });
 
 app.use('/auth', auth);
