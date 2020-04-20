@@ -36,7 +36,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-  res.json({ msg: 'hook successfully working version 2' });
+  res.json({ msg: 'hook successfully working version 3' });
 });
 
 app.use('/auth', auth);
