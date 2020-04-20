@@ -10,6 +10,6 @@ COPY . .
 
 ENV PORT=3000
 
-EXPOSE 7000:3000
+EXPOSE 7269:3000
 
 CMD ["node", "server.js"]
